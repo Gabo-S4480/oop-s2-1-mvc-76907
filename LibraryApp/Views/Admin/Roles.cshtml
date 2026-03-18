@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+@{
+    ViewData["Title"] = "Manage Roles";
+}
+
+<div class="container mt-4">
+    <h2>System Role Management</h2>
+    <hr />
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">Create New Role</div>
+        <div class="card-body">
+            <form asp-action="CreateRole" method="post" class="row g-3">
+                <div class="col-auto">
+                    <input name="roleName" class="form-control" placeholder="Role Name (e.g. Librarian)" required />
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success">Add Role</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Role Name</th>
+                <th>Role ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td><strong>@role.Name</strong></td>
+                    <td class="text-muted">@role.Id</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
